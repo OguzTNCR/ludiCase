@@ -36,14 +36,21 @@ class Command(BaseCommand):
 
 
         for user in users_data:
-            simulation = simulations[user["simulation_id"]]
-            signup_datetime = datetime(1899, 12, 30) + timedelta(days=user["signup_datetime"])
-            user = User(
-                user_id=user["user_id"],
-                user_name=user["user_name"],
-                user_surname=user["user_surname"],
-                simulation=simulation,
-                signup_datetime=signup_datetime,
-                progress_percent=user["progress_percent"],
-            )
-            user.save()
+            try:
+                simulation = simulations[user["simulation_id"]]
+                signup_datetime = datetime(1899, 12, 30) + timedelta(days=user["signup_datetime"])
+                user = User(
+                    user_id=user["user_id"],
+                    user_name=user["user_name"],
+                    user_surname=user["user_surname"],
+                    simulation=simulation,
+                    signup_datetime=signup_datetime,
+                    progress_percent=user["progress_percent"],
+                )
+                user.save()
+            except KeyError:
+                print(f"Simulation with ID {user['simulation_id']} not found")
+                continue
+            except Exception as e:
+                print(f"Error saving user {user['user_id']}: {e}")
+                continue

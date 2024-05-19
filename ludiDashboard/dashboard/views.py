@@ -17,7 +17,9 @@ def company_users(request):
 def user_growth(request):
     oldest_signup = User.objects.order_by("signup_datetime").first().signup_datetime
     oldest_signup = make_naive(oldest_signup)
-    date_range = [oldest_signup + timedelta(days=i) for i in range((datetime.now() - oldest_signup).days + 1)]
+    newest_signup = User.objects.order_by("-signup_datetime").first().signup_datetime
+    newest_signup = make_naive(newest_signup)
+    date_range = [oldest_signup + timedelta(days=i) for i in range((newest_signup - oldest_signup).days + 1)]
 
     user_counts = []
 
