@@ -17,7 +17,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from dashboard import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("company_users/", views.company_users),
+    path("user_growth/", views.user_growth),
 ]

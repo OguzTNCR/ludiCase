@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Company Users</title>
+</head>
+<body>
+    <h1>Company Users</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Total Users</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for company in companies %}
+            <tr>
+                <td>{{ company.company_name }}</td>
+                <td>{{ company.num_users }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
