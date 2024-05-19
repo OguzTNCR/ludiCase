@@ -43,8 +43,6 @@ Open your preferred web browser and enter the following URL:
 
 ### Navigating the Application
 
-**Home Page:** The default page that loads when you access the application URL.
-
 **User Growth Page:** To view the user growth chart, navigate to the specific URL configured in your Django application.
 
 http://127.0.0.1:8000/user_growth/
